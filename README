@@ -1,9 +1,9 @@
-CoDScript TextMate bundle
+CoDScript Sublime Package
 
 by Indrek 'Ingram' Ardel
 
 
-This is supposed to work mainly with Sublime Text 2, but should work as well in TextMate.
+This is supposed to work mainly with Sublime Text 2 (www.sublimetext.com/dev), but should work as well in TextMate.
 The main goal is to support proper syntax highlighting for that specific editor.
 
 CoDScript is a derivation of QuakeC Scripting language, it is a C-like language which is heavily simplified.
