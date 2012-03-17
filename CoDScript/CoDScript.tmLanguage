@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>comment</key>
+	<string>I don't think anyone uses .hp. .cp tends to be paired with .h. (I could be wrong. :) -- chris</string>
+	<key>fileTypes</key>
+	<array>
+		<string>gsc</string>
+	</array>
+	<!--
+		if you know what to use to match codscripts, do it!
+	key>firstLineMatch</key>
+	<string>-\*- C\+\+ -\*-</string-->
+	<!-- random gibberish to me-->
+	<key>foldingStartMarker</key>
+	<string>(?x)
+		 /\*\*(?!\*)
+		|^(?![^{]*?//|[^{]*?/\*(?!.*?\*/.*?\{)).*?\{\s*($|//|/\*(?!.*?\*/.*\S))
+	</string>
+	<key>foldingStopMarker</key>
+	<string>(?&lt;!\*)\*\*/|^\s*\}</string>
+	<key>keyEquivalent</key>
+	<string>^~C</string>
+	<key>name</key>
+	<string>CoDScript</string>
+	<key>patterns</key>
+	<array>
+		<!-- variables have no syntax??? -->
+		<!-- functions -->
+
+		<!-- numbers. are there more number types than 1 , 1.0 and .1 ?-->
+		<dict>
+			<key>match</key>
+			<string>\b([0-9]+(\.[0-9]+)?)|(\.[0-9]+)\b</string>
+			<key>name</key>
+			<string>constant.numeric.gsc</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>(?i)\b(undefined|true|false)</string>
+			<key>name</key>
+			<string>constant.language.gsc</string>
+		</dict>
+
+		<!-- strings -->
+		<dict>
+			<key>begin</key>
+			<string>'</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.string.begin.gsc</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>'</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.string.end.gsc</string>
+				</dict>
+			</dict>
+			<key>name</key>
+			<string>string.quoted.single.gsc</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>(\\.)|(&amp;&amp;[1-9]\d*)</string>
+					<key>name</key>
+					<string>constant.character.escape.gsc</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>"</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.string.begin.gsc</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>"</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.string.end.gsc</string>
+				</dict>
+			</dict>
+			<key>name</key>
+			<string>string.quoted.double.gsc</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>(\\.)|(&amp;&amp;[1-9]\d*)</string>
+					<key>name</key>
+					<string>constant.character.escape.gsc</string>
+				</dict>
+			</array>
+		</dict>
+
+		<!-- comments -->
+		<dict>
+			<key>begin</key>
+			<string>/\*</string>
+			<key>captures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.comment.gsc</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>\*/</string>
+			<key>name</key>
+			<string>comment.block.gsc</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.comment.gsc</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(//).*$\n?</string>
+			<key>name</key>
+			<string>comment.line.double-slash.gsc</string>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>^\s*#\s*(include)\b\s+</string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.import.include.c</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(?=(?://|/\*))|$</string>
+			<key>name</key>
+			<string>meta.preprocessor.c.include</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>[A-z0-9_-]</string>
+					<key>name</key>
+					<string>string.quoted.other.lt-gt.include.c</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>\b(break(point)?|case|continue|default|else|for|if|return|switch|thread|waittillframeend|while)\b</string>
+			<key>name</key>
+			<string>keyword.control.gsc</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>(?i)\b(setdvar|getdvar|sqrt|int|iprintln|iprintlnbold|assert)(?=\s*\()</string>
+			<key>name</key>
+			<string>support.function.builtin.gsc</string>
+		</dict>
+		<!-- operators
+				! - negation
+				% - modulo
+				& - bitwise and [NEEDS CHECKING]
+				| - bitwise or [NEEDS CHECKING]
+				^ - bitwise xor [NEEDS CHECKING]
+				-- - subtract 1
+				++ - add 1
+				+ - add
+				== equals
+				= set variable value
+				!= does not equal
+				<= less than equal
+				>= greater than equal
+				< less than
+				> greater than
+				&& - and
+				|| - or
+				*= multiply by
+				/= divide by
+				%= mod n
+				+= add n
+				-= sub n
+				&= bitwise and n
+				^= xor n
+				|= bitwise or n
+
+				broken because %%%%%%%%%%%%%% or =========== works
+		 -->
+
+
+		<dict>
+			<key>match</key>
+			<string>!|%|&amp;|\*|\-\-|\-|\+\+|\+|==|=|!=|&lt;=|&gt;=|&lt;|&gt;|&amp;&amp;|\|\||\||\*=|/=|%=|\+=|\-=|&amp;=|\^=|\|=|\^|/</string>
+			<key>name</key>
+			<string>keyword.operator.gsc</string>
+		</dict>
+	</array>
+	<key>scopeName</key>
+	<string>source.gsc</string>
+	<key>uuid</key>
+	<string>HOW TO GET A NEW ONE?</string>
+</dict>
+</plist>
