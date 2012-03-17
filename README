@@ -1,0 +1,10 @@
+CoDScript TextMate bundle
+
+by Indrek 'Ingram' Ardel
+
+
+This is supposed to work mainly with Sublime Text 2, but should work as well in TextMate
+
+CoDScript is a derivation of QuakeC Scripting language, it is a c-like language which is heavily simplified.
+
+*This is still work in progress*
