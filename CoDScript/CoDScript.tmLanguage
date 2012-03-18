@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>comment</key>
-	<string>I don't think anyone uses .hp. .cp tends to be paired with .h. (I could be wrong. :) -- chris</string>
 	<key>fileTypes</key>
 	<array>
 		<string>gsc</string>
@@ -18,6 +16,7 @@
 		 /\*\*(?!\*)
 		|^(?![^{]*?//|[^{]*?/\*(?!.*?\*/.*?\{)).*?\{\s*($|//|/\*(?!.*?\*/.*\S))
 	</string>
+	<!-- what's this? -->
 	<key>foldingStopMarker</key>
 	<string>(?&lt;!\*)\*\*/|^\s*\}</string>
 	<key>keyEquivalent</key>
@@ -26,8 +25,7 @@
 	<string>CoDScript</string>
 	<key>patterns</key>
 	<array>
-		<!-- variables have no syntax??? -->
-		<!-- functions -->
+		<!-- we are still missing functions -->
 
 		<!-- numbers. are there more number types than 1 , 1.0 and .1 ?-->
 		<dict>
@@ -36,6 +34,7 @@
 			<key>name</key>
 			<string>constant.numeric.gsc</string>
 		</dict>
+		<!-- static keywords: true false and undefined-->
 		<dict>
 			<key>match</key>
 			<string>(?i)\b(undefined|true|false)</string>
@@ -43,7 +42,7 @@
 			<string>constant.language.gsc</string>
 		</dict>
 
-		<!-- strings -->
+		<!-- strings and special characters in strings -->
 		<dict>
 			<key>begin</key>
 			<string>'</string>
@@ -142,6 +141,8 @@
 			<key>name</key>
 			<string>comment.line.double-slash.gsc</string>
 		</dict>
+
+		<!-- #include filename; -->
 		<dict>
 			<key>begin</key>
 			<string>^\s*#\s*(include)\b\s+</string>
@@ -150,20 +151,20 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.control.import.include.c</string>
+					<string>keyword.control.import.include.gsc</string>
 				</dict>
 			</dict>
 			<key>end</key>
 			<string>(?=(?://|/\*))|$</string>
 			<key>name</key>
-			<string>meta.preprocessor.c.include</string>
+			<string>meta.preprocessor.gsc.include</string>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>match</key>
 					<string>[A-z0-9_-]</string>
 					<key>name</key>
-					<string>string.quoted.other.lt-gt.include.c</string>
+					<string>string.quoted.other.lt-gt.include.gsc</string><!-- change this -->
 				</dict>
 			</array>
 		</dict>
