@@ -47,7 +47,7 @@ Main(parameter, param2, param3)
 	myvar = true; // Boolean
 	myvar = "Word"; // String
 	myvar = undefined; // Undefined
-	myvar = (1, 5.4, .1); // Vector (x, y, z) - accepts integers, float and boolean (casted to 0 or 1)
+	myvar = (1, 5.4, .1); // Vector (x, y, z) - accepts integers, float and boolean (cast to 0 or 1)
 	myvar = (true, 1, false); // Also perfectly legal
 	iprintln(myvar);
 	myvar = .1; // Another way of representing float value of 0.1
