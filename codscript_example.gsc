@@ -267,7 +267,7 @@ setDvar  (
 
 Return()
 {
-	iprintln("hehey!");
+	iprintln("hehey! \\\s&&1 &&2 &&3...", ":)", ":/", "&&1"); // Will output "hehey! \s:) :/ &&1..."
 }
 
 returnten()
